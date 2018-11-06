@@ -76,7 +76,7 @@ class Weed_The_Types_Assets
 		 * class.
 		 */
 
-		wp_enqueue_style($this->plugin_name, dirname(plugin_dir_url(__FILE__)) . '/assets/dist/css/weed-the-types.min.css', array(), $this->version, 'all');
+		wp_enqueue_style($this->plugin_name, dirname(plugin_dir_url(__FILE__)) . '/assets/scss/weed-the-types.css', array(), $this->version, 'all');
 
 	}
 
@@ -100,7 +100,7 @@ class Weed_The_Types_Assets
 		 * class.
 		 */
 
-		wp_enqueue_script($this->plugin_name, dirname(plugin_dir_url(__FILE__)) . '/assets/dist/js/weed-the-types.min.js', array('jquery'), $this->version, false);
+		wp_enqueue_script($this->plugin_name, dirname(plugin_dir_url(__FILE__)) . '/assets/js/weed-the-types.min.js', array('jquery'), $this->version, false);
 
 	}
 

@@ -11,7 +11,7 @@ const helpers = function(args) {
 };
 
 // environment setups
-const APP_DIR = helpers("./assets/src");
+const APP_DIR = helpers("./assets");
 const BUILD_DIR = helpers("./assets/dist");
 const NODE_ENV = process.env.NODE_ENV;
 const isProd = NODE_ENV === "production";
@@ -19,11 +19,11 @@ const isProd = NODE_ENV === "production";
 // compilation proper
 const config = {
   entry: {
-    "css/weed-the-types": [APP_DIR + "/scss/weed-the-types.scss"],
+    "scss/weed-the-types": [APP_DIR + "/scss/weed-the-types.scss"],
     "js/weed-the-types": [APP_DIR + "/js/weed-the-types.js"]
   },
   output: {
-    path: BUILD_DIR,
+    path: APP_DIR,
     filename: "[name].min.js"
   },
   module: {
@@ -69,8 +69,8 @@ const config = {
       }
     }),
     new MiniCssExtractPlugin({
-      filename: "[name].min.css",
-      chunkFilename: "[id].[hash].min.css"
+      filename: "[name].css",
+      chunkFilename: "[id].[hash].css"
     })
   ]
 };

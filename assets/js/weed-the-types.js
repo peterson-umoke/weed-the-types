@@ -30,3 +30,5 @@
    */
 
 })(jQuery);
+
+require("./App");
