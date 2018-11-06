@@ -134,7 +134,7 @@ class Weed_The_Types
 	private function define_admin_hooks()
 	{
 
-		$plugin_admin = new Weed_The_Types_Admin($this->get_plugin_name(), $this->get_version());
+		$plugin_admin = new Weed_The_Types_Assets($this->get_plugin_name(), $this->get_version());
 
 		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_styles');
 		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts');
