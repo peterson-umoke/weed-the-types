@@ -64,7 +64,7 @@ class Weed_The_Types_Menu
     public function register_menus()
     {
         $parent_name = $this->plugin_name . "-weed-types";
-        add_menu_page('Weed The Types', 'Weed The Types', 'manage_options', $parent_name, null, 'dashicons-trash');
+        add_menu_page('Weed The Types', 'Weed The Types', 'manage_options', $parent_name, null, 'dashicons-trash', 11);
         add_submenu_page($parent_name, 'Weed Product Types', 'Weed Product Types', 'manage_options', $this->plugin_name . '-product-types', array($this, 'delete_product_types'));
         add_submenu_page($parent_name, 'Weed Post Types', 'Weed Post Types', 'manage_options', $this->plugin_name . '-post-types', array($this, 'delete_post_types'));
         remove_submenu_page($parent_name, $parent_name);
