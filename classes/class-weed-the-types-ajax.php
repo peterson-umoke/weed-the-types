@@ -119,42 +119,40 @@ class Weed_The_Types_Ajax
 
         $product_type = $_POST['submit_data'];
 
-        $data['response'] = $product_type;
-        
-        // if (!empty($product_type)) {
-        //     $args = array(
-        //         'post_type' => 'product',
-        //         'posts_per_page' => -1,
-        //         'tax_query' => array(
-        //             array(
-        //                 'taxonomy' => 'product_type',
-        //                 'field' => 'slug',
-        //                 'terms' => "$product_type",
-        //             ),
-        //         ),
-        //     );
-        //     $query = new WP_Query($args);
+        if (!empty($product_type)) {
+            $args = array(
+                'post_type' => 'product',
+                'posts_per_page' => -1,
+                'tax_query' => array(
+                    array(
+                        'taxonomy' => 'product_type',
+                        'field' => 'slug',
+                        'terms' => "$product_type",
+                    ),
+                ),
+            );
+            $query = new WP_Query($args);
 
-        //     $i = 0;
-        //     if ($query->have_posts()) {
-        //         while ($query->have_posts()) : $query->the_post();
+            $i = 0;
+            if ($query->have_posts()) {
+                while ($query->have_posts()) : $query->the_post();
 
-        //         // delete the post
-        //         wp_delete_post(get_the_ID());
+                // delete the post
+                wp_delete_post(get_the_ID());
 
-        //         endwhile;
-        //         wp_reset_postdata();
+                endwhile;
+                wp_reset_postdata();
 
-        //         $data['response'] = "Done Deleting $product_type post types";
-        //         $data['output'] = "Done Deleting $product_type post types";
-        //     } else {
-        //         $data['response'] = "The query results are empty try again!";
-        //         $data['output'] = "The query results are empty try again!";
-        //     }
-        // } else {
-        //     $data['response'] = "The Selection is empty try again!";
-        //     $data['output'] = "The Selection is empty try again!";
-        // }
+                $data['response'] = "Done Deleting $product_type post types";
+                $data['output'] = "Done Deleting $product_type post types";
+            } else {
+                $data['response'] = "The query results are empty try again!";
+                $data['output'] = "The query results are empty try again!";
+            }
+        } else {
+            $data['response'] = "The Selection is empty try again!";
+            $data['output'] = "The Selection is empty try again!";
+        }
 
 
         echo json_encode($data);
