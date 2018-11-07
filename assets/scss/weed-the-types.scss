@@ -3,6 +3,32 @@
  * included in this file.
  */
 
-h1 {
+@import "./../../node_modules/toastr/toastr";
+
+h1.supper {
   padding: 20px;
+}
+
+.wtt-btn {
+  border: 1px solid #ccc;
+  background-color: seagreen;
+  padding: 0 20px;
+  line-height: 50px;
+  color: white;
+}
+
+.wtt-wrapper {
+  display: flex;
+  justify-content: center;
+  select {
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    width: 80%;
+    color: #333;
+    height: auto;
+  }
+
+  button:last-child {
+    background-color: saturate(#d84925, 10);
+  }
 }

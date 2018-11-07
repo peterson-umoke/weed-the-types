@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
     "autoprefixer": "^9.3.1",
@@ -10,18 +11,18 @@
     "mini-css-extract-plugin": "^0.4.4",
     "node-sass": "^4.10.0",
     "postcss-loader": "^3.0.0",
+    "prop-types": "^15.6.2",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
+    "toastr": "^2.1.4",
     "webpack": "^4.25.1"
   },
   "scripts": {
-    "build": "./node_modules/.bin/webpack -p --progress --profile --colors",
     "start": "./node_modules/.bin/webpack -d --progress --colors --watch",
-    "start:prod": "./node_modules/.bin/webpack -p --progress --colors --watch",
-    "start:noprogress": "./node_modules/.bin/webpack -d --colors --watch",
     "refresh-classes": "composer dump-autoload",
+    "build": "./node_modules/.bin/webpack -p --progress --profile --colors",
     "watch": "yarn start"
   },
   "devDependencies": {

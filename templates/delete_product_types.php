@@ -1,0 +1,1 @@
+<div id="delete-product-types-app"></div>

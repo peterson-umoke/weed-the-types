@@ -135,9 +135,17 @@ class Weed_The_Types
 	{
 
 		$plugin_admin = new Weed_The_Types_Assets($this->get_plugin_name(), $this->get_version());
+		$plugin_menus = new Weed_The_Types_Menu($this->get_plugin_name(), $this->get_version());
+		$ajax_actions = new Weed_The_Types_Ajax($this->get_plugin_name(), $this->get_version());
+
 
 		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_styles');
 		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts');
+		$this->loader->add_action('admin_menu', $plugin_menus, 'register_menus');
+		$this->loader->add_action('wp_ajax_delete_post_types', $ajax_actions, 'delete_post_types');
+		$this->loader->add_action('wp_ajax_get_post_types', $ajax_actions, 'get_post_types');
+		$this->loader->add_action('wp_ajax_get_product_types', $ajax_actions, 'get_product_types');
+		$this->loader->add_action('wp_ajax_delete_product_types', $ajax_actions, 'delete_product_types');
 
 	}
 

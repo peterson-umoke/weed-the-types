@@ -1,0 +1,1 @@
+<div id="delete-post-types-app"></div>

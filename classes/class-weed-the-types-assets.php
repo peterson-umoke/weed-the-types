@@ -41,6 +41,7 @@ class Weed_The_Types_Assets
 	 */
 	private $version;
 
+
 	/**
 	 * Initialize the class and set its properties.
 	 *
@@ -100,7 +101,16 @@ class Weed_The_Types_Assets
 		 * class.
 		 */
 
-		wp_enqueue_script($this->plugin_name, dirname(plugin_dir_url(__FILE__)) . '/assets/js/weed-the-types.min.js', array('jquery'), $this->version, false);
+		global $parent_file, $submenu_file, $post_type;
+
+		if ($parent_file === "weed-the-types-weed-types") {
+			wp_enqueue_script($this->plugin_name, dirname(plugin_dir_url(__FILE__)) . '/assets/js/weed-the-types.min.js', array('jquery'), $this->version, true);
+			wp_localize_script(
+				$this->plugin_name,
+				'wtt_values',
+				array('ajax_url' => admin_url('admin-ajax.php'), 'wtt_key_value' => wp_create_nonce($this->plugin_name . "xyz"))
+			);
+		}
 
 	}
 
