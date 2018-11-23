@@ -80,8 +80,6 @@ export default class DeleteProductTypes extends Component {
   }
 
   render() {
-    // const listVal = this.state.resulttypes;
-
     return (
       <>
         <FormButton
@@ -89,7 +87,6 @@ export default class DeleteProductTypes extends Component {
           submit_button="Delete Product Type"
           title="Weed Product Types"
           description="Use the Form Below to delete all product types you dont like"
-          {/* resulttypes={listVal} */}
           onClick={this.getMoreTypes}
           onSubmit={this.submitForm}
           onChange={this.handleInputChange}
