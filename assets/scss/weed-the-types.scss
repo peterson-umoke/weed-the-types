@@ -20,7 +20,9 @@ h1.supper {
 .wtt-wrapper {
   display: flex;
   justify-content: center;
-  select {
+
+  select,
+  input[type='text'] {
     padding: 10px 15px;
     margin-bottom: 20px;
     width: 80%;
@@ -28,7 +30,17 @@ h1.supper {
     height: auto;
   }
 
-  button:last-child {
-    background-color: saturate(#d84925, 10);
+  // button:last-child {
+  //   // background-color: saturate(#d84925, 10);
+  // }
+
+  .button.btn-lg-wt {
+    height: 55px;
+    $combine: 30px;
+
+    padding: {
+      left: $combine !important;
+      right: $combine !important;
+    }
   }
 }
