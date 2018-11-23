@@ -62,26 +62,25 @@ export default class DeleteProductTypes extends Component {
 
   getMoreTypes() {
     // tell the user what is going on
-    toastr.info("Fetching new Product Types...");
-
-    Axios({
-      url: wtt_values.ajax_url,
-      data: {
-        security: wtt_values.wtt_key_value,
-        action: "get_product_types"
-      },
-      method: "POST"
-    })
-      .then(res => {
-        // console.log(res.data);
-        toastr.success("Product Types Fetched Successfully");
-        this.setState({ resulttypes: res.data });
-      })
-      .catch(error => console.log(error));
+    // toastr.info("Fetching new Product Types...");
+    // Axios({
+    //   url: wtt_values.ajax_url,
+    //   data: {
+    //     security: wtt_values.wtt_key_value,
+    //     action: "get_product_types"
+    //   },
+    //   method: "POST"
+    // })
+    //   .then(res => {
+    //     // console.log(res.data);
+    //     toastr.success("Product Types Fetched Successfully");
+    //     this.setState({ resulttypes: res.data });
+    //   })
+    //   .catch(error => console.log(error));
   }
 
   render() {
-    const listVal = this.state.resulttypes;
+    // const listVal = this.state.resulttypes;
 
     return (
       <>
@@ -90,12 +89,12 @@ export default class DeleteProductTypes extends Component {
           submit_button="Delete Product Type"
           title="Weed Product Types"
           description="Use the Form Below to delete all product types you dont like"
-          resulttypes={listVal}
+          {/* resulttypes={listVal} */}
           onClick={this.getMoreTypes}
           onSubmit={this.submitForm}
           onChange={this.handleInputChange}
         />
-        {this.state.output}
+        {/* {this.state.output} */}
       </>
     );
   }
