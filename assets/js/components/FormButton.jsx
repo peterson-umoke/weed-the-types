@@ -30,7 +30,15 @@ export class FormButton extends Component {
         <form onSubmit={this.props.onSubmit}>
           <div className="dropdown-select-p-text wtt-text-wrapper" />
           <div className="wtt-wrapper">
-            <select
+            <input
+              type="text"
+              name="wtt_product_types"
+              id="wtt-product-types"
+              value={this.props.wtt_product_types}
+              onChange={this.props.onChange}
+              autoComplete="off"
+            />
+            {/* <select
               name="wtt_product_types"
               id="wtt-product-types"
               value={this.props.wtt_product_types}
@@ -38,17 +46,18 @@ export class FormButton extends Component {
             >
               <option value="">---</option>
               {listVal}
-            </select>
+            </select> */}
           </div>
           <div className="wtt-wrapper">
-            <button
+            {/* <button
               type="button"
               onClick={this.props.onClick}
               className="wtt-btn"
             >
               {this.props.more_button}
-            </button>
-            <button type="submit" className="wtt-btn">
+            </button> */}
+            {/* <button type="submit" className="wtt-btn"> */}
+            <button type="submit" className="button btn-lg-wt">
               {this.props.submit_button}
             </button>
           </div>
