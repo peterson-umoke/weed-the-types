@@ -63,22 +63,22 @@ export default class DeletePostTypes extends Component {
   }
 
   getMoreTypes() {
-    Axios({
-      url: wtt_values.ajax_url,
-      data: {
-        security: wtt_values.wtt_key_value,
-        action: "get_post_types"
-      },
-      method: "POST"
-    })
-      .then(res => {
-        this.setState({ resulttypes: res.data });
-      })
-      .catch(error => console.log(error));
+    // Axios({
+    //   url: wtt_values.ajax_url,
+    //   data: {
+    //     security: wtt_values.wtt_key_value,
+    //     action: "get_post_types"
+    //   },
+    //   method: "POST"
+    // })
+    //   .then(res => {
+    //     this.setState({ resulttypes: res.data });
+    //   })
+    //   .catch(error => console.log(error));
   }
 
   render() {
-    const listVal = this.state.resulttypes;
+    // const listVal = this.state.resulttypes;
     // const listVal2 =
     //   this.state.outputs_two !== ""
     //     ? this.state.log.map(res => <li key={res.toString()}>{res.name}</li>)
@@ -91,7 +91,7 @@ export default class DeletePostTypes extends Component {
           submit_button="Delete Post Type"
           title="Weed Post Types"
           description="Use the Form Below to delete all Post types you dont like"
-          resulttypes={listVal}
+          {/* resulttypes={listVal} */}
           onClick={this.getMoreTypes}
           onSubmit={this.submitForm}
           onChange={this.handleInputChange}
