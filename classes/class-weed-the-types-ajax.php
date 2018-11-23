@@ -65,10 +65,12 @@ class Weed_The_Types_Ajax
     {
         // check the nounce sent
         check_ajax_referer($this->plugin_name . 'xyz', 'security');
+        global $wpdb;
 
         $post_type = $_POST['submit_data'];
 
         if (!empty($post_type)) {
+            
             $args = array(
                 'post_type' => $post_type,
                 'posts_per_page' => -1,
@@ -78,18 +80,14 @@ class Weed_The_Types_Ajax
             $i = 0;
             if ($query->have_posts()) {
 
-                while ($query->have_posts()) : $query->the_post();
-                $i++;
-                $data['log'][] = "deleting the $i";
-
-                // delete the post
-                wp_delete_post(get_the_ID());
-
-                endwhile;
-                wp_reset_postdata();
-
-                $data['response'] = "Done Deleting $post_type post types";
-                $data['output'] = "Done Deleting $post_type post types";
+                $sql = "DELETE FROM $wpdb->posts WHERE  `post_type` =  '{$post_type}'";
+                if( $wpdb->query($sql) !== false) {
+                    $data['response'] = "Done Deleting $post_type post types";
+                    $data['output'] = "Done Deleting $post_type post types";
+                } else {
+                    $data['response'] = "Error Occurred";
+                    $data['output'] = "Error Occurred";
+                }
             } else {
                 $data['response'] = "The query results are empty try again!";
                 $data['output'] = "The query results are empty try again!";
@@ -115,11 +113,13 @@ class Weed_The_Types_Ajax
     {
         // check the nounce sent
         check_ajax_referer($this->plugin_name . 'xyz', 'security');
+        global $wpdb;
 
 
         $product_type = $_POST['submit_data'];
 
         if (!empty($product_type)) {
+            
             $args = array(
                 'post_type' => 'product',
                 'posts_per_page' => -1,
@@ -135,16 +135,24 @@ class Weed_The_Types_Ajax
 
             $i = 0;
             if ($query->have_posts()) {
-                while ($query->have_posts()) : $query->the_post();
-
-                // delete the post
-                wp_delete_post(get_the_ID());
-
-                endwhile;
-                wp_reset_postdata();
-
-                $data['response'] = "Done Deleting $product_type post types";
-                $data['output'] = "Done Deleting $product_type post types";
+                $sql = "DELETE posts, terms
+                        FROM
+                        $wpdb->posts AS posts
+                        INNER JOIN $wpdb->term_relationships AS term_relationships ON posts.ID = term_relationships.object_id
+                        INNER JOIN $wpdb->term_taxonomy AS term_taxonomy ON term_relationships.term_taxonomy_id = term_taxonomy.term_taxonomy_id
+                        INNER JOIN $wpdb->terms AS terms ON term_taxonomy.term_id = terms.term_id
+                        WHERE
+                            term_taxonomy.taxonomy = 'product_type'
+                        AND terms.slug = '$product_type'
+                        AND posts.post_type = 'product';";
+                
+                if( $wpdb->query($sql) !== false) {
+                    $data['response'] = "Done Deleting $product_type product types";
+                    $data['output'] = "Done Deleting $product_type product types";
+                } else {
+                    $data['response'] = "Error Occurred";
+                    $data['output'] = "Error Occurred";
+                }
             } else {
                 $data['response'] = "The query results are empty try again!";
                 $data['output'] = "The query results are empty try again!";
